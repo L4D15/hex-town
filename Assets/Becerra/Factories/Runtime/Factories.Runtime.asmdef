@@ -1,0 +1,23 @@
+{
+    "name": "Factories.Runtime",
+    "rootNamespace": "",
+    "references": [
+        "Currency.Runtime",
+        "Deck.Runtime",
+        "Events.Runtime",
+        "HexGrid.Runtime",
+        "Map.Runtime",
+        "User.Runtime",
+        "Zenject",
+        "Services.Runtime"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

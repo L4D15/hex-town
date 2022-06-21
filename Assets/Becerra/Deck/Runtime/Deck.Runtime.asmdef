@@ -1,0 +1,18 @@
+{
+    "name": "Deck.Runtime",
+    "rootNamespace": "",
+    "references": [
+        "GUID:2a6126ab26f960343b22c0e20971fe23",
+        "GUID:21b0c8d1703a94250bfac916590cea4f",
+        "GUID:b969771ed7a605a45971cce244dacebc"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

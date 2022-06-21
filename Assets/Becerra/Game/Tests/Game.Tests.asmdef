@@ -1,0 +1,29 @@
+{
+    "name": "Game.Tests",
+    "rootNamespace": "",
+    "references": [
+        "Game.Runtime",
+        "Factories.Runtime",
+        "Services.Runtime",
+        "Currency.Runtime",
+        "Deck.Runtime",
+        "Events.Runtime",
+        "Input.Runtime",
+        "Map.Runtime",
+        "UI.Runtime",
+        "User.Runtime",
+        "Zenject",
+        "Zenject-TestFramework"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

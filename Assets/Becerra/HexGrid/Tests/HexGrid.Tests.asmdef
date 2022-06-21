@@ -1,0 +1,20 @@
+{
+    "name": "HexGrid.Tests",
+    "rootNamespace": "",
+    "references": [
+        "GUID:1a4d3589047345a45874b458eabf213d"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

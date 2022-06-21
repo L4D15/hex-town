@@ -1,0 +1,139 @@
+﻿namespace Becerra.HexGrid
+{
+    using UnityEngine;
+
+    /// <summary>
+    /// Base implementation of a hex tile inside a hex grid.
+    /// </summary>
+    public class HexTile : IHexTile
+    {
+        /// <summary>
+        /// Number of corners in a hex.
+        /// </summary>
+        public const int CornersCount = 5;
+
+        /// <summary>
+        /// Collection of all corners of this tile.
+        /// </summary>
+        private readonly Vector2[] corners;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HexTile"/> class
+        /// </summary>
+        public HexTile()
+        {
+            this.corners = new Vector2[CornersCount];
+        }
+
+        /// <summary>
+        /// Gets the position in world space (unity coordinates)
+        /// </summary>
+        public Vector2 WorldPosition { get; private set; }
+
+        /// <summary>
+        /// Gets the position inside the hex grid, using cube coordinates.
+        /// </summary>
+        public Vector3 CubePosition { get; private set; }
+
+        /// <summary>
+        /// Gets the position inside the hex grid, using offset coordinates.
+        /// </summary>
+        public Vector2 OffsetPosition { get; private set; }
+
+        /// <summary>
+        /// Gets the size of the tile, from the center to one of the corners.
+        /// </summary>
+        public float Size { get; private set; }
+
+        /// <summary>
+        /// Gets the full width of the tile, from left to right.
+        /// </summary>
+        public float Width { get; private set; }
+
+        /// <summary>
+        /// Gets the full height of the tile, from bottom to top.
+        /// </summary>
+        public float Height { get; private set; }
+
+        public Vector2 GetCorner(int cornerIndex)
+        {
+            int index = cornerIndex % CornersCount;
+
+            return this.corners[index];
+        }
+
+        public void SetWorldPosition(Vector2 worldPosition)
+        {
+            this.WorldPosition = worldPosition;
+
+            RecalculateCorners();
+        }
+
+        public void SetCubePosition(Vector3 cubePosition)
+        {
+            this.CubePosition = CubePosition;
+
+            RecalculateOffsetPosition();
+        }
+
+        public void SetOffsetPosition(Vector2 offsetPosition)
+        {
+            this.OffsetPosition = offsetPosition;
+
+            RecalculateCubePosition();
+        }
+
+        public void SetSize(float size)
+        {
+            this.Size = size;
+
+            RecalculateCorners();
+            RecalculateWidth();
+            RecalculateHeight();
+        }
+
+        private void RecalculateCorners()
+        {
+        }
+
+        private void RecalculateWidth()
+        {
+        }
+
+        private void RecalculateHeight()
+        {
+        }
+
+        private void RecalculateOffsetPosition()
+        {
+        }
+
+        private void RecalculateCubePosition()
+        {
+        }
+
+        private static float CalculateWidth(float size)
+        {
+            float width = 0f;
+
+            return width;
+        }
+
+        private static float CalculateHeight(float size)
+        {
+            float height = 0f;
+
+            return height;
+        }
+
+        private static Vector2 CalculateCornerWorldPosition(Vector2 center, float size, int cornerIndex)
+        {
+            var angle_deg = 60f * cornerIndex - 30f;
+            var angle_rad = Mathf.PI / 180f * angle_deg;
+            var x = center.x + size * Mathf.Cos(angle_rad);
+            var y = center.y + size * Mathf.Sin(angle_rad);
+
+            return new Vector2(x, y);
+        }
+    }
+}

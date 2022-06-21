@@ -1,0 +1,25 @@
+{
+    "name": "Game.Runtime",
+    "rootNamespace": "",
+    "references": [
+        "Services.Runtime",
+        "Factories.Runtime",
+        "Events.Runtime",
+        "Currency.Runtime",
+        "Deck.Runtime",
+        "HexGrid.Runtime",
+        "Input.Runtime",
+        "UI.Runtime",
+        "User.Runtime",
+        "Zenject"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

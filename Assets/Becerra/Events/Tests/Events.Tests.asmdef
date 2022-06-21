@@ -1,0 +1,23 @@
+{
+    "name": "Events.Tests",
+    "rootNamespace": "",
+    "references": [
+        "Events.Runtime",
+        "Factories.Runtime",
+        "Zenject",
+        "Zenject-TestFramework"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": true
+}

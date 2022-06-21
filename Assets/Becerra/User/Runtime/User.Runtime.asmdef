@@ -1,0 +1,22 @@
+{
+    "name": "User.Runtime",
+    "rootNamespace": "",
+    "references": [
+        "Currency.Runtime",
+        "Deck.Runtime",
+        "Events.Runtime",
+        "Map.Runtime",
+        "Unity.VisualScripting.Core",
+        "Unity.VisualScripting.Flow",
+        "Unity.VisualScripting.State"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
