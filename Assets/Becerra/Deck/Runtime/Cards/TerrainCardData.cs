@@ -1,11 +1,9 @@
-﻿namespace Becerra.Deck.Cards
-{
-    using Becerra.Map;
-    using Unity.VisualScripting;
-    using UnityEngine;
+﻿using Becerra.Map;
+using UnityEngine;
 
+namespace Becerra.Deck.Cards
+{
     [CreateAssetMenu(fileName = "TerrainCard", menuName = "Becerra/Data/Terrain Card")]
-    [Inspectable]
     public class TerrainCardData : CardData
     {
         [SerializeField] private MapTileType terrainType;

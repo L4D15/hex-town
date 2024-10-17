@@ -1,9 +1,7 @@
-﻿using Unity.VisualScripting;
-
+﻿
 namespace Becerra.Deck
 {
     [System.Serializable]
-    [Inspectable]
     public class Card : ICard
     {
         public Card(string uniqueID, CardData data)

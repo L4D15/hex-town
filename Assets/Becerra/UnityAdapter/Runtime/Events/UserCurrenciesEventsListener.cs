@@ -2,9 +2,7 @@
 using Becerra.Currency.Events;
 using Becerra.Events;
 using Becerra.User;
-using Becerra.User.Events;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Becerra.UnityAdapter.Events
@@ -78,7 +76,7 @@ namespace Becerra.UnityAdapter.Events
             {
                 case CurrencyType.Gold:
                     {
-                        EventBus.Trigger(GoldAmountChangedEvent.EventName, this.gameObject, gameEvent.TotalAmount);
+                        // TODO: Update any relevant widgets
                         break;
                     }
             }

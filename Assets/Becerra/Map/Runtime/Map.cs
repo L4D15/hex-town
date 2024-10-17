@@ -4,7 +4,6 @@
     using Becerra.HexGrid.Coordinates;
     using Sirenix.OdinInspector;
     using System.Collections.Generic;
-    using Unity.VisualScripting;
     using UnityEngine;
 
     public class Map : MonoBehaviour

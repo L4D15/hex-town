@@ -1,11 +1,9 @@
-﻿namespace Becerra.Deck
-{
-    using UnityEngine;
-    using Sirenix.OdinInspector;
-    using Unity.VisualScripting;
+﻿using UnityEngine;
+using Sirenix.OdinInspector;
 
+namespace Becerra.Deck
+{
     [System.Serializable]
-    [Inspectable]
     [CreateAssetMenu(fileName = "Card", menuName = "Becerra/Data/Card")]
     public class CardData : ScriptableObject
     {

@@ -1,23 +1,19 @@
-﻿using Unity.VisualScripting;
-
+﻿
 namespace Becerra.HexGrid.Coordinates
 {
     /// <summary>
     /// Position in axial coordinates.
     /// </summary>
-    [Inspectable]
     public struct AxialCoordinates
     {
         /// <summary>
         /// X axis.
         /// </summary>
-        [Inspectable]
         public int X;
 
         /// <summary>
         /// Y axis.
         /// </summary>
-        [Inspectable]
         public int Y;
 
         /// <summary>

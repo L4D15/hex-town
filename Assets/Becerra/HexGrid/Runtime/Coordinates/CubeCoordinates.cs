@@ -1,30 +1,25 @@
-﻿using Unity.VisualScripting;
-
+﻿
 namespace Becerra.HexGrid.Coordinates
 {
     /// <summary>
     /// Position in cube coordinates.
     /// </summary>
     [System.Serializable]
-    [Inspectable]
     public struct CubeCoordinates
     {
         /// <summary>
         /// X axis
         /// </summary>
-        [Inspectable]
         public int X;
 
         /// <summary>
         /// Y axis
         /// </summary>
-        [Inspectable]
         public int Y;
 
         /// <summary>
         /// Z axis
         /// </summary>
-        [Inspectable]
         public int Z;
 
         /// <summary>

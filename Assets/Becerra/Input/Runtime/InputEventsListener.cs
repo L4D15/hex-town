@@ -1,10 +1,9 @@
-﻿namespace Becerra.Input
-{
-    using Lean.Touch;
-    using System.Collections.Generic;
-    using Unity.VisualScripting;
-    using UnityEngine;
+﻿using Lean.Touch;
+using System.Collections.Generic;
+using UnityEngine;
 
+namespace Becerra.Input
+{
     public class InputEventsListener : MonoBehaviour
     {
         public Camera WorldCamera;
@@ -31,7 +30,7 @@
 
             var screenPosition = finger.ScreenPosition;
 
-            EventBus.Trigger(CustomEvents.OnTapEvent.EventName, screenPosition);
+            // TODO: Send event throught message bus
         }
 
         private void OnFingerUp(LeanFinger finger)
@@ -42,7 +41,7 @@
             {
                 Vector2 worldDelta = finger.GetWorldDelta(-this.WorldCamera.transform.position.z, this.WorldCamera);
 
-                EventBus.Trigger(CustomEvents.OnDragFinishedEvent.EventName, worldDelta);
+                // TODO: Send event throught message bus
             }
 
             this._isDragging = false;
@@ -59,7 +58,8 @@
             if (worldDelta.magnitude <= 0f) return;
 
             this._isDragging = true;
-            EventBus.Trigger(CustomEvents.OnDragEvent.EventName, worldDelta);
+
+            // TODO: Send event throught message bus
         }
 
         private void OnGesture(List<LeanFinger> fingers)
