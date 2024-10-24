@@ -28,6 +28,8 @@
         /// </summary>
         private CubeCoordinates[] neighbors;
 
+        private Vector2 _originalWorldPosition;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="HexTile" /> class
         /// </summary>
@@ -35,6 +37,7 @@
         {
             this.corners = new Vector2[CornersCount];
             this.neighbors = new CubeCoordinates[NeighborsCount];
+            this.Plane = GridPlane.XY;
 
             SetSize(1f);
             SetCubePosition(new CubeCoordinates(0, 0, 0));
@@ -45,10 +48,11 @@
         /// an initial position inside the grid and a default size of 1.
         /// </summary>
         /// <param name="cubePosition"></param>
-        public HexTile(CubeCoordinates cubePosition)
+        public HexTile(CubeCoordinates cubePosition, GridPlane plane)
         {
             this.corners = new Vector2[CornersCount];
             this.neighbors = new CubeCoordinates[NeighborsCount];
+            this.Plane = plane;
 
             SetSize(1f);
             SetCubePosition(cubePosition);
@@ -60,10 +64,11 @@
         /// </summary>
         /// <param name="cubePosition"></param>
         /// <param name="size"></param>
-        public HexTile(CubeCoordinates cubePosition, float size)
+        public HexTile(CubeCoordinates cubePosition, float size, GridPlane plane)
         {
             this.corners = new Vector2[CornersCount];
             this.neighbors = new CubeCoordinates[NeighborsCount];
+            this.Plane = plane;
 
             SetSize(size);
             SetCubePosition(cubePosition);
@@ -72,7 +77,7 @@
         /// <summary>
         /// Gets the position in world space (unity coordinates)
         /// </summary>
-        public Vector2 WorldPosition { get; private set; }
+        public Vector3 WorldPosition => ProjectPointIntoPlane(_originalWorldPosition, this.Plane);
 
         /// <summary>
         /// Gets the position inside the hex grid, using cube coordinates.
@@ -115,15 +120,21 @@
         public int NeighborsCount => 6;
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <value></value>
+        public GridPlane Plane { get; private set; }
+
+        /// <summary>
         /// Gets the world position of one of the 6 corners of the tile.
         /// </summary>
         /// <param name="cornerIndex">Index of the tile, from 0 to <see cref="CornersCount" /></param>
         /// <returns>World position of the corner.</returns>
-        public Vector2 GetCorner(int cornerIndex)
+        public Vector3 GetCorner(int cornerIndex)
         {
             int index = Mathf.Clamp(cornerIndex, 0, this.corners.Length - 1);
 
-            return this.corners[index];
+            return ProjectPointIntoPlane(this.corners[index], this.Plane);
         }
 
         /// <summary>
@@ -144,7 +155,7 @@
         /// <param name="worldPosition">Position in world (unity coordinates)</param>
         public void SetWorldPosition(Vector2 worldPosition)
         {
-            this.WorldPosition = worldPosition;
+            this._originalWorldPosition = worldPosition;
 
             this.OnWorldPositionChanged();
         }
@@ -238,6 +249,13 @@
             return new Vector2(x, y);
         }
 
+        private static Vector3 ProjectPointIntoPlane(Vector3 point, GridPlane plane)
+        {
+            if (plane == GridPlane.XZ) return new Vector3(point.x, point.z, point.y);
+
+            return point;
+        }
+
         /// <summary>
         /// When the size of the tile has changed.
         /// </summary>
@@ -261,7 +279,8 @@
         {
             this.RecalculateNeighbors();
 
-            this.WorldPosition = CoordinatesConversor.CubeToWorld(this.CubePosition, this.Width, this.Height);
+            this._originalWorldPosition = CoordinatesConversor.CubeToWorld(this.CubePosition, this.Width, this.Height);
+
             this.OnWorldPositionChanged();
         }
 

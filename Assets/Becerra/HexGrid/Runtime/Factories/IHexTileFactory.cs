@@ -13,6 +13,6 @@
         /// <param name="cubePosition">Cube position inside the tile</param>
         /// <param name="size">Size of the tile.</param>
         /// <returns>New tile at the given position.</returns>
-        IHexTile CreateHexTile(CubeCoordinates cubePosition, float size);
+        IHexTile CreateHexTile(CubeCoordinates cubePosition, float size, GridPlane plane);
     }
 }

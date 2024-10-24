@@ -11,9 +11,9 @@
     /// </summary>
     public class DefaultHexTileFactory : MonoBehaviour, IHexTileFactory
     {
-        public IHexTile CreateHexTile(CubeCoordinates cubePosition, float size)
+        public IHexTile CreateHexTile(CubeCoordinates cubePosition, float size, GridPlane plane)
         {
-            return new HexTile(cubePosition, size);
+            return new HexTile(cubePosition, size, plane);
         }
     }
 }

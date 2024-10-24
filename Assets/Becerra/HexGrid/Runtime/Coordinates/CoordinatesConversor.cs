@@ -114,7 +114,7 @@
         /// <param name="tileWidth">Width of tiles in the grid.</param>
         /// <param name="tileHeight">height of tiles in the grid.</param>
         /// <returns>World position of the tile's center.</returns>
-        public static Vector2 AxialToWorld(AxialCoordinates axial, float tileWidth, float tileHeight)
+        public static Vector3 AxialToWorld(AxialCoordinates axial, float tileWidth, float tileHeight)
         {
             var x = (axial.X + axial.Y * 0.5f) * tileWidth;
             var y = (-1f) * axial.Y * tileHeight * (3f / 4f);

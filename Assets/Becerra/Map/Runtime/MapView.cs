@@ -6,9 +6,8 @@
     using System.Collections.Generic;
     using UnityEngine;
 
-    public class Map : MonoBehaviour
+    public class MapView : MonoBehaviour
     {
-        [TabGroup("References")]
         public HexGrid Grid;
 
         [AssetsOnly]
@@ -16,9 +15,12 @@
 
         private Dictionary<CubeCoordinates, MapTile> tiles;
 
-        public void GenerateMap(int size)
+        public void GenerateMap()
         {
-            var hexTiles = this.Grid.FindTilesInRange(new CubeCoordinates(0, 0, 0), size - 1);
+            this.Grid.Initialize();
+            this.Grid.Create();
+
+            var hexTiles = this.Grid.FindTilesInRange(new CubeCoordinates(0, 0, 0), this.Grid.Size - 1);
 
             this.tiles = new Dictionary<CubeCoordinates, MapTile>(hexTiles.Count);
 

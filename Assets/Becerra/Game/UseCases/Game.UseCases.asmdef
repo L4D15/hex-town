@@ -1,0 +1,17 @@
+{
+    "name": "Game.UseCases",
+    "rootNamespace": "",
+    "references": [
+        "Game.Runtime",
+        "Map.Runtime"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

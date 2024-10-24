@@ -15,6 +15,11 @@
     public class HexGrid : MonoBehaviour
     {
         /// <summary>
+        /// Plane to project the grid into.
+        /// </summary>
+        public GridPlane Plane = GridPlane.XY;
+
+        /// <summary>
         /// Size of the grid, representing rings from the center.
         /// </summary>
         public int Size = 3;
@@ -211,7 +216,9 @@
                 return null;
             }
 
-            return this.tilesFactory.CreateHexTile(cubePosition, this.TileSize);
+            var tile = this.tilesFactory.CreateHexTile(cubePosition, this.TileSize, this.Plane);
+
+            return tile;
         }
 
         /// <summary>

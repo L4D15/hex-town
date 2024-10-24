@@ -9,9 +9,15 @@
     public interface IHexTile
     {
         /// <summary>
+        /// Plane where the tiles are projected.
+        /// </summary>
+        /// <value></value>
+        GridPlane Plane { get; }
+
+        /// <summary>
         /// Gets the position in world coordinates.
         /// </summary>
-        Vector2 WorldPosition { get; }
+        Vector3 WorldPosition { get; }
 
         /// <summary>
         /// Gets the position in cube coordinates inside a hex grid.
@@ -58,7 +64,7 @@
         /// </summary>
         /// <param name="cornerIndex">Index of the tile, from 0 to 5.</param>
         /// <returns>Position of the corner in world coordinates.</returns>
-        Vector2 GetCorner(int cornerIndex);
+        Vector3 GetCorner(int cornerIndex);
 
         /// <summary>
         /// Gets the position of a neighbor tile.
