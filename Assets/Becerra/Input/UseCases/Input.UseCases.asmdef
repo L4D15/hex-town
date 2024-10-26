@@ -4,7 +4,8 @@
     "references": [
         "Input.Runtime",
         "Map.Runtime",
-        "HexGrid.Runtime"
+        "HexGrid.Runtime",
+        "AstarPathfindingProject"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

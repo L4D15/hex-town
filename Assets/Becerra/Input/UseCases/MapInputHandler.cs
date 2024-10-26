@@ -54,16 +54,20 @@ namespace Becerra.Input.UseCases
 
             if (_isHit)
             {
-                var coordinates = _mapView.Grid.WorldToGridPosition(_worldPoint);
-                _mapView.Grid.HighlightTile(coordinates);
-            }
-        }
+                var closestNode = _mapView.Pathfinder.graphs[0].active.GetNearest(_worldPoint, Pathfinding.NNConstraint.None).node;
+                var tile = _mapView.GetTile(closestNode.NodeIndex);
 
-        private void OnDrawGizmos()
-        {
-            if (_mapView != null && _isHit)
-            {
-                _mapView.Grid.DrawCursorGizmo(_worldPoint);
+                if (tile != null)
+                {
+                    tile.IsHighlighted = true;
+
+                    if (_highlightedTile != null && tile != _highlightedTile)
+                    {
+                        _highlightedTile.IsHighlighted = false;
+                    }
+
+                    _highlightedTile = tile;
+                }
             }
         }
     }

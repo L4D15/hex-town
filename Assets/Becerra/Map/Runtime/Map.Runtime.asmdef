@@ -3,7 +3,8 @@
     "rootNamespace": "",
     "references": [
         "HexGrid.Runtime",
-        "uPools"
+        "uPools",
+        "AstarPathfindingProject"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

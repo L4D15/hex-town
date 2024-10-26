@@ -1,7 +1,5 @@
 ﻿namespace Becerra.Map
 {
-    using Becerra.HexGrid;
-    using Becerra.HexGrid.Coordinates;
     using Sirenix.OdinInspector;
     using System.Collections.Generic;
     using UnityEngine;
@@ -9,49 +7,43 @@
 
     public class MapView : MonoBehaviour
     {
-        public HexGrid Grid;
-
+        [SceneObjectsOnly]
+        public AstarPath Pathfinder;
         [AssetsOnly]
         public MapTile TilePrefab;
 
-        private Dictionary<CubeCoordinates, MapTile> tiles;
+        private Dictionary<int, MapTile> tiles;
         private GameObjectPool tilesPool;
 
         public void GenerateMap()
         {
             this.tilesPool = new GameObjectPool(this.TilePrefab.gameObject);
-            this.Grid.Initialize();
-            this.Grid.Create();
+            var grid = Pathfinder.graphs[0];
+            this.tiles = new Dictionary<int, MapTile>();
 
-            var hexTiles = this.Grid.FindTilesInRange(new CubeCoordinates(0, 0, 0), this.Grid.Size - 1);
-
-            this.tiles = new Dictionary<CubeCoordinates, MapTile>(hexTiles.Count);
-
-            foreach (HexTile hexTile in hexTiles)
+            grid.active.data.GetNodes(node =>
             {
-                var mapTile = CreateTile(hexTile);
+                var mapTile = CreateTile();
 
-                this.tiles.Add(hexTile.CubePosition, mapTile);
-
+                mapTile.Index = node.NodeIndex;
+                mapTile.transform.position = (Vector3)node.position;
                 mapTile.Show();
-            }
+                this.tiles.Add(mapTile.Index, mapTile);
+            });
         }
 
-        public MapTile GetTile(CubeCoordinates cubeCoordinates)
+        public MapTile GetTile(int index)
         {
-            if (this.tiles.ContainsKey(cubeCoordinates) == false) return null;
+            if (tiles.TryGetValue(index, out MapTile mapTile) == false) return null;
 
-            return this.tiles[cubeCoordinates];
+            return mapTile;
         }
 
-        private MapTile CreateTile(HexTile hexTile)
+        private MapTile CreateTile()
         {
             var tile = tilesPool.Rent(transform).GetComponent<MapTile>();
 
-            tile.SetHexTile(hexTile);
             tile.RandomizeType();
-
-            tile.name = $"TileMap {hexTile.AxialPosition}";
 
             return tile;
         }

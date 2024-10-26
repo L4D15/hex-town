@@ -1,19 +1,24 @@
 ﻿namespace Becerra.Map
 {
-    using Becerra.HexGrid;
     using UnityEngine;
 
     public class MapTile : MonoBehaviour
     {
         [SerializeField] public GameObject highlightVisual;
 
-        public HexTile HexTile { get; private set; }
-
-        public void SetHexTile(HexTile tile)
+        public int Index { get; set; }
+        public bool IsHighlighted
         {
-            this.HexTile = tile;
-            this.transform.position = tile.WorldPosition;
+            get => _isHighlighted;
+
+            set
+            {
+                _isHighlighted = value;
+                highlightVisual.SetActive(value);
+            }
         }
+
+        private bool _isHighlighted;
 
         public void Show()
         {
