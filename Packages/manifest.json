@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.annulusgames.u-pools": "https://github.com/AnnulusGames/uPools.git?path=/Assets/uPools",
     "com.coffee.ui-particle": "4.10.1",
     "com.littlebigfun.addressable-importer": "0.16.1",
     "com.unity.2d.animation": "10.1.3",

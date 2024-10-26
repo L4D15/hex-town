@@ -133,8 +133,9 @@
         public Vector3 GetCorner(int cornerIndex)
         {
             int index = Mathf.Clamp(cornerIndex, 0, this.corners.Length - 1);
+            var point = this.corners[index];
 
-            return ProjectPointIntoPlane(this.corners[index], this.Plane);
+            return point;
         }
 
         /// <summary>
@@ -239,17 +240,18 @@
         /// <param name="size">Size of the tile, from its center to one of its corners.</param>
         /// <param name="cornerIndex">Index of the corner, from 0 to <see cref="CornersCount"/></param>
         /// <returns>World position (unity coordinates) of the corner.</returns>
-        private static Vector2 CalculateCornerWorldPosition(Vector2 center, float size, int cornerIndex)
+        private static Vector2 CalculateCornerWorldPosition(Vector2 center, float size, int cornerIndex, GridPlane plane)
         {
             var angle_deg = (60f * cornerIndex) - 30f;
             var angle_rad = Mathf.PI / 180f * angle_deg;
             var x = center.x + (size * Mathf.Cos(angle_rad));
             var y = center.y + (size * Mathf.Sin(angle_rad));
+            var point = new Vector2(x, y);
 
-            return new Vector2(x, y);
+            return point;
         }
 
-        private static Vector3 ProjectPointIntoPlane(Vector3 point, GridPlane plane)
+        public static Vector3 ProjectPointIntoPlane(Vector3 point, GridPlane plane)
         {
             if (plane == GridPlane.XZ) return new Vector3(point.x, point.z, point.y);
 
@@ -292,7 +294,7 @@
         {
             for (int i = 0; i < this.corners.Length; i++)
             {
-                this.corners[i] = CalculateCornerWorldPosition(this.WorldPosition, this.Size, i);
+                this.corners[i] = CalculateCornerWorldPosition(this.WorldPosition, this.Size, i, this.Plane);
             }
         }
 

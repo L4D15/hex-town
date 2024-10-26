@@ -9,6 +9,7 @@
 
     using UnityEditor;
     using Sirenix.OdinInspector;
+    using UnityEngine.UIElements;
 
 #endif
 
@@ -158,7 +159,9 @@
         /// <returns>Position in grid coordinates.</returns>
         public CubeCoordinates WorldToGridPosition(Vector3 worldPosition)
         {
-            return CoordinatesConversor.WorldToCube(worldPosition, this.tileWidth, this.tileHeight);
+            var point = HexTile.ProjectPointIntoPlane(worldPosition, this.Plane);
+
+            return CoordinatesConversor.WorldToCube(point, this.tileWidth, this.tileHeight);
         }
 
         /// <summary>

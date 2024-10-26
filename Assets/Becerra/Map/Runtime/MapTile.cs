@@ -5,8 +5,13 @@
 
     public class MapTile : MonoBehaviour
     {
+        [SerializeField] public GameObject highlightVisual;
+
+        public HexTile HexTile { get; private set; }
+
         public void SetHexTile(HexTile tile)
         {
+            this.HexTile = tile;
             this.transform.position = tile.WorldPosition;
         }
 

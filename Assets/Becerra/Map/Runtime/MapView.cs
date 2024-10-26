@@ -5,6 +5,7 @@
     using Sirenix.OdinInspector;
     using System.Collections.Generic;
     using UnityEngine;
+    using uPools;
 
     public class MapView : MonoBehaviour
     {
@@ -14,9 +15,11 @@
         public MapTile TilePrefab;
 
         private Dictionary<CubeCoordinates, MapTile> tiles;
+        private GameObjectPool tilesPool;
 
         public void GenerateMap()
         {
+            this.tilesPool = new GameObjectPool(this.TilePrefab.gameObject);
             this.Grid.Initialize();
             this.Grid.Create();
 
@@ -43,7 +46,7 @@
 
         private MapTile CreateTile(HexTile hexTile)
         {
-            var tile = Instantiate<MapTile>(this.TilePrefab, transform);
+            var tile = tilesPool.Rent(transform).GetComponent<MapTile>();
 
             tile.SetHexTile(hexTile);
             tile.RandomizeType();
